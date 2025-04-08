@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specimen Size Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Specimen Size Converter</h1>
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="size">Size of the specimen:</label>
+            <input type="number" id="size" name="size" step="any" required>
+
+            <label for="from_unit">Current unit:</label>
+            <select id="from_unit" name="from_unit" required>
+                <option value="mm">mm</option>
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+                <option value="inches">inches</option>
+                <option value="feet">feet</option>
+                <option value="um">um</option>
+            </select>
+
+            <label for="to_unit">Unit to convert to:</label>
+            <select id="to_unit" name="to_unit" required>
+                <option value="mm">mm</option>
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+                <option value="inches">inches</option>
+                <option value="feet">feet</option>
+                <option value="um">um</option>
+            </select>
+
+            <label for="magnification">Magnification factor (default is 1):</label>
+            <input type="number" id="magnification" name="magnification" step="any" value="1">
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <h2>Saved Specimen Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Actual Size</th>
+                    <th>Converted Size</th>
+                    <th>Magnification</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td>{{ record[1] }}</td>
+                    <td>{{ record[2] }} {{ record[5] }} </td>  <!-- Actual size with unit -->
+                    <td>{{ record[3] }} {{ record[6] }} </td>  <!-- Converted size with unit -->
+                    <td>{{ record[4] }}</td>  <!-- Magnification -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
