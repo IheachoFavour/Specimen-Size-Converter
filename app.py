@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -91,4 +94,5 @@ def index():
 
 if __name__ == '__main__':
     create_table()
-    app.run(debug=True)
+    port = os.environ.get('PORT') or 4000
+    app.run(debug=True, host="0.0.0.0", port=port)
