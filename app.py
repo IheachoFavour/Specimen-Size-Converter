@@ -81,7 +81,7 @@ def index():
         if result is not None:
             # Save to the database, including magnification
             save_to_database(username, size, result, magnification, from_unit, to_unit)
-            flash(f"{username}, the converted size is: {result:.2f} {to_unit}", "success")
+            flash(f"{username}, the real life size is: {result:.2f} {to_unit}", "success")
         else:
             flash("Invalid unit provided.", "error")
         

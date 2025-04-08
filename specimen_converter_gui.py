@@ -37,7 +37,7 @@ def calculate():
         result = convert_size(size, from_unit, to_unit, magnification)
         
         if result is not None:
-            result_label.config(text=f"Converted size: {result:.2f} {to_unit}")
+            result_label.config(text=f"Real Life size: {result:.2f} {to_unit}")
         else:
             messagebox.showerror("Error", "Invalid unit provided.")
     except ValueError:
@@ -74,6 +74,9 @@ calculate_button.grid(row=4, columnspan=2)
 # Result label
 result_label = tk.Label(root, text="")
 result_label.grid(row=5, columnspan=2)
+
+# Replace 'myenv' with your desired environment name
+
 
 # Start the Tkinter event loop
 root.mainloop()

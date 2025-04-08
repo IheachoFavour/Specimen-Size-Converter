@@ -56,7 +56,7 @@ def calculate():
         result = convert_size(size, from_unit, to_unit, magnification)
         
         if result is not None:
-            result_label.config(text=f"Converted size: {result:.2f} {to_unit}")
+            result_label.config(text=f"Real Life size: {result:.2f} {to_unit}")
             save_to_database(username, size, result)
             messagebox.showinfo("Success", "Data saved to database.")
         else:

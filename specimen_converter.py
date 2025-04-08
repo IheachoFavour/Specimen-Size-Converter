@@ -42,7 +42,7 @@ def main():
     converted_size = convert_size(size, from_unit, to_unit, magnification)
     
     # Output result
-    print(f"The converted size is: {converted_size:.2f} {to_unit}")
+    print(f"The Real Life size is: {converted_size:.2f} {to_unit}")
 
 if __name__ == "__main__":
     main()
